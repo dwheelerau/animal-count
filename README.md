@@ -12,12 +12,12 @@ animals and apply a species label. On program close a CSV file of species counts
 
 ## install
 1. Install Anaconda through the MS software center
-    - uncheck any options for a desktop icon, but accept options for a shortcut in the menu 
+    - uncheck any options for a desktop icon, but accept options for a shortcut in the menu   
+    - Note: The software center will report that the install failed, ignore this message,
+instead check for the `Anaconda` shortcut options in the menu.   
+    - if you are using a non-soe computer used this link [Anaconda](https://www.anaconda.com/download)  
+    - If the above failed see the section on using Miniconda  
 
-Note: The software center will report that the install failed, ignore this message,
-instead check for the `Anaconda` shortcut options in the menu.  
-    - if you are using a non-soe computer used this link [Anaconda](https://www.anaconda.com/download).
-    - If the above failed see the section on using Miniconda
 2. Install `git` through teh software center (this will add bash tools)  
 3. Activate conda via a `conda powershell terminal` avaiable through `Anaconda navigator shortcut`)
 4. Run the following code (copy line by line) that will create a new environment to install dependencies.  
