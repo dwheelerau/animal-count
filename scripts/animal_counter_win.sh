@@ -16,7 +16,10 @@ vid_out_dir=${vid%.*}
 rm -rf $vid_out_dir
 
 # process video catch upper and lower case
-python scripts/get_metadata.py $vid
+target_fps=$(cat config/target_fps.txt)
+echo "target FPS used is: " $target_fps
+python scripts/get_metadata.py $vid $target_fps
+# per = FPS of video / desired FPS
 per_param=$(cat config/rate_file.txt)
 video-toimg --per $per_param $vid
 
