@@ -1,41 +1,52 @@
-# Animal counter
+# Animal counter app for the VPRU  
 
 ## Introduction  
 Simple animal counter app based on the
 open source package [labelme](https://github.com/labelmeai/labelme.git).  
 
-This should work pre/post SOE on windows systems. The individual bash scripts should work on POSIX,
-with minor modification. A conda env file is provided for easy clonning.    
-  
+The program splits a MP4 video into individual frames and allows the user
+to annoate animals with labels. After the program closes a CSV file is created
+that contains the counts of each animal type.  
 
-Splits a MP4 video into frames and allows users to draw boundary boxes around 
-animals and apply a species label. On program close a CSV file of species counts is provided. 
+This should work pre/post SOE on windows systems. The individual bash scripts should work on POSIX,
+with minor modification. A conda env file is provided for easy clonning using conda.    
+
+## Running the software  
+1. Copy the video you wish to process into the `video-to-proc` folder (make sure only
+   one video is found in this folder).  
+2. Double click on the `duck-counter.bat` file (several terminal windows will open)
+3. The GUI should open, select menu option [Edit]->[Create rectangle]
+4. Draw a box around the object using the mouse and add the label
+5. Use the back and forward buttons to move through frames
+6. When you are finished annotating, just close the program
+7. A CSV file named after the video file will contain a summary of the counts.
+
+## Troubleshooting  
+- Dont include spaces in filenames, use underscores instead "_"!
+- The video needs to have the file extension .MP4 or .mp4
 
 ## install
-1. Install Anaconda through the MS software center
-    - uncheck any options for a desktop icon, but accept options for a shortcut in the menu   
-    - Note: The software center will report that the install failed, ignore this message,
-instead check for the `Anaconda` shortcut options in the menu.   
+1. Install Anaconda through the MS software center, **ignore the 'install failed message'** \-:
+    
+Check that there is a new "start menu" folder called the `Anaconda`.   
     - if you are using a non-soe computer use this link [Anaconda](https://www.anaconda.com/download)  
-    - If the above failed see the section on using Miniconda  
 
 2. Install `git` through the software center (this will add the required bash tools)  
-3. Open a `conda powershell terminal` avaiable through `Anaconda navigator shortcut`   
-4. Run the following code (copy line by line) that will create a new environment to install dependencies   
+3. Open a `Anaconda powershell terminal` avaiable through `Anaconda` folder shortcut in the start menu   
+4. Run the following code (copy line by line and press ENTER after each line),
+   this will create a new isolated python environment to install all dependencies.   
 
 ```
 conda create --name=labelme python=3
 conda activate labelme
 pip install labelme
+pip install video-cli
+pip install imageio-ffmpeg
 ```
-
-5. Download the scripts directory from the [repo](https://github.com/dwheelerau/animal-count)
-
-6. Open this new directory, and copy the MP4 video to the `video-to-proc` folder.  
-    - Custom labels can be added by creating a text file called `labels.txt`
-in the `config` directory. This file should consist of one species name per row. These
-can also be added latter manually using the labelme GUI.    
-
+5. Download the scripts from this repo (ie this webpage) by clicking the green `code` button and selecting 'zip' file
+6. Unzip the folder to your desktop
+7. Open this new directory, and copy the MP4 video to the `video-to-proc` folder.
+8. Follow the instructions above to run the software  
 
 ## Outputs  
 A single spreadsheet containing the list of animals and there counts will be saved to the
@@ -61,6 +72,18 @@ conda create --name=labelme python=3
 conda activate labelme
 pip install labelme
 ```
+## Customisation  
+### Modifying the number of individual image frames generated from a single video
+The number of single frame images that 
+are created can be adjusted by modifying the number in the file `config/rate_file.txt`. This number
+is XXXXXXXX, so increasing it will increase it will XXXXXXXXXXXXXXXXXXXX,
+but as a result the program will take longer to process a
+video.
+
+### Custom animal labels
+One off custom labels can be added via the GUI (draw the polygon and add it to the free form text window),
+or for persistant labels add the name to the bottom of the `config/labels.txt` file (on its own line). Save
+the file and this label will appear as an option when the program is started.  
 
 ## The files  
 A description of the files is below.
