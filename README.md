@@ -54,22 +54,14 @@ base directory, with the filename being the video name + a time stamp.
 
 ## Customisation  
 ### Modifying the number of individual image frames generated from a single video
-The number of single frame images that 
-are created can be adjusted by modifying the number in the file `config/rate_file.txt`. This number
-is called the `per` value. To adjust this value you need to know the FPS (Frames per second) of your 
-video. To find this information right click on the file, click [properties] and [details]. Once you know
-the FPS value, the equation to set the per value is = FPS/(required frames per scond). So if the
-FPS value is listed as 29, then setting the number in `config/rate_file.txt` to 29 will create  1 frame
-per second of video footage. For more temporal resolution, you may want (for example) 2 frames 
-per second. For 2 frames per second set the `config/rate_file.txt` number to 29/2=14. Note 
-increasing the number of frames will make require more processing time. Likewise to get 1 frame per 2 second
-of video, the formulia would be 29/0.5=58, so use 58 in the `config/rate_file.txt` file.  
+Modify the number in the file `config/target_fps.txt`. For 1 frame per second just add the number
+1 to this file. For 2 frames per second add 2, etc. To reduce the temnporal resolution you can
+use 0.5, which will create 1 framer per 2 seconds of video.  
 
 ### Custom animal labels
 One off custom labels can be added via the GUI (draw the polygon and add it to the free form text window),
 or for persistant labels add the name to the bottom of the `config/labels.txt` file (on its own line). Save
 the file and this label will appear as an option when the program is started.  
-
 
 ## Using miniconda instead of Anaconda (more advanced)  
 For a minimal install you could use 
@@ -107,6 +99,18 @@ A description of the files is below.
 The default video splitting is 1 FPS, if this is too little or too much, see the comment in the
 `scripts/get_metadata.py` file to adjust. A smaller FPS results in less images to annotate, but may
 leed to missed animals that fall between frames.   
+
+## Historical notes about the per value (ignore as not used)  
+The number of single frame images that 
+are created can be adjusted by modifying the number in the file `config/rate_file.txt`. This number
+is called the `per` value. To adjust this value you need to know the FPS (Frames per second) of your 
+video. To find this information right click on the file, click [properties] and [details]. Once you know
+the FPS value, the equation to set the per value is = FPS/(required frames per scond). So if the
+FPS value is listed as 29, then setting the number in `config/rate_file.txt` to 29 will create  1 frame
+per second of video footage. For more temporal resolution, you may want (for example) 2 frames 
+per second. For 2 frames per second set the `config/rate_file.txt` number to 29/2=14. Note 
+increasing the number of frames will make require more processing time. Likewise to get 1 frame per 2 second
+of video, the formulia would be 29/0.5=58, so use 58 in the `config/rate_file.txt` file.  
 
 ## options  
 - `FPS` split can be adjusted as described above
