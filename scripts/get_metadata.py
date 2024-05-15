@@ -11,7 +11,7 @@ target_fps=sys.argv[2]
 if len(target_fps) < 1:
     target_fps = 1
 target_fps = float(target_fps) 
-per=str(int(target_fps*fps))
+per=str(int(fps/target_fps))
 
 with open('config/rate_file.txt', 'w') as wf:
     wf.write(per)
